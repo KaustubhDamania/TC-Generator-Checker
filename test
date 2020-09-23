@@ -1,0 +1,6 @@
+#! /bin/bash
+
+echo "Testing runner.py..."
+python3 -m unittest tests/test_runner/test_runner.py
+echo "Testing checker.py..."
+python3 -m unittest tests/test_checker/test_checker.py

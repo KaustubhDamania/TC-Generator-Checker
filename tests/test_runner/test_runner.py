@@ -5,7 +5,7 @@ import os
 class SimpleTest(unittest.TestCase):
 
     def test(self):
-        os.chdir('tests/runner_test')
+        os.chdir('tests/test_runner')
         runner_obj = Runner('./test_runner.out')
         with open('test_runner_output1') as f:
             expected_output = f.read()

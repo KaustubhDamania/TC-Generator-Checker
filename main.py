@@ -1,0 +1,1 @@
+# TODO: Write the main program which merges each component
