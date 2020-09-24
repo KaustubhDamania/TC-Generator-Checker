@@ -1,5 +1,5 @@
-from runner import Runner
-from generator import Generator
+from edge_case_finder.runner import Runner
+from edge_case_finder.generator import Generator
 from os import remove as delete_file
 
 class Checker:
