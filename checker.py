@@ -1,4 +1,6 @@
 from runner import Runner
+from generator import Generator
+from os import remove as delete_file
 
 class Checker:
     def __init__(self, command_correct_soln, command_incorrect_soln, input_fn):
@@ -21,8 +23,6 @@ class Checker:
     
     # check for randomised test cases
     def check_randomised(self, iterations, stats=False):
-        from generator import Generator
-        from os import remove as delete_file
         generator_obj = Generator(self.input_fn)
         failed_count = 0
         # TODO: optimize this routine using multithreading
@@ -32,7 +32,11 @@ class Checker:
             if not self.check_one(file_name, stats):
                 failed_count += 1
             delete_file(file_name)
-        if stats:
-            print('✅: {} ❌: {}'.format(iterations-failed_count, failed_count))
+        if failed_count == 0:
+            print('\x1b[6;30;42m' + 'Success! All test cases passed!' + '\x1b[0m')
+        else:
+            print('\x1b[5;30;41m' + 'Failed! One or more test cases failed!' + '\x1b[0m')
+        print('✅: {} ❌: {}'.format(iterations-failed_count, failed_count))
+        
         return failed_count == 0
 
