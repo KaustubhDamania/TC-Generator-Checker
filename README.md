@@ -6,7 +6,10 @@
 
 ## Usage
 
+
 ```
+$ python -m edge_case_checker.main -h
+
 usage: main.py [-h] [-i INPUT_FN] [--iterations ITERATIONS] [--soln SOLN] [-c CORRECT_SOLN] [-v VERBOSE]
 
 Generate random test cases!
