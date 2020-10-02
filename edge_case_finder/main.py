@@ -1,5 +1,5 @@
 import argparse
-from checker import Checker
+from edge_case_finder.checker import Checker
 from os import remove as delete_file
 from os import listdir
 
@@ -10,7 +10,7 @@ def parse_args():
     parser.add_argument('--soln', help='Command to run the soln to be tested.')
     parser.add_argument('-c', '--correct_soln', help='Command to run the correct soln.')
     parser.add_argument('-v', '--verbose', help='Stats for nerds!', default=False, type=bool)
-    parser.add_argument('-o', '--output-file', help='Edge cases will be stored in this file (default: edge_cases.txt)', default='edge_cases.txt')
+    parser.add_argument('-o', '--output-file', help='Summary of failing test cases will be stored in this file', default='edge_cases.txt')
     args = parser.parse_args()
     return args
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
             delete_file('temp.py')
     try:
         checker = Checker(args.correct_soln, args.soln, input_fn)
-        checker.check_randomised(args.iterations, stats=args.verbose)
+        checker.check_randomised(args.iterations, stats=args.verbose, out_file=args.output_file)
     except Exception as e:
         print('Some error occured with the execution of the files!')
         print(e)
