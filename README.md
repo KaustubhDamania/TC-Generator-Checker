@@ -1,5 +1,5 @@
 # Soln_test
-:tada: This program tests your solution with a brute force soln to find edge cases.
+:tada: This program tests your solution with a given correct / brute force soln to find edge cases where your solution fails.
 
 ## Installation
 `$ python3 setup.py install`
