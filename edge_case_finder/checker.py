@@ -17,7 +17,7 @@ class Checker:
         actual = incorrect.run(input_file)
         if expected['output'] != actual['output']:
             # print('\x1b[6;30;42m' + 'Success!' + '\x1b[0m')
-            content = '\x1b[5;30;41mFailed!\x1b[0m\n'
+            content = 'Failed!\n'
             content += 'Test case:\n{}\n'
             content += 'Expected output:\n{}\n'
             content += 'Actual output:\n{}\n\n'
@@ -31,7 +31,7 @@ class Checker:
             # print('Expected output', expected['output'])
             # print('Actual output', actual['output'])
         return expected['output'] == actual['output']
-    
+
     # check for randomised test cases
     def check_randomised(self, iterations, stats=False, out_file=None):
         generator_obj = Generator(self.input_fn)
@@ -41,9 +41,9 @@ class Checker:
         if out_file:
             with open(out_file,'w') as f:
                 pass
-        
+
         # TODO: optimize this routine using multithreading
-        for t in range(iterations): 
+        for t in range(iterations):
             file_name = os.path.join(folder_name, 'tc' + str(t))
             generator_obj.generate(2, file_path=file_name)
             if not self.check_one(file_name, stats, out_file):
@@ -51,9 +51,9 @@ class Checker:
             else:
                 delete_file(file_name)
         if failed_count == 0:
-            print('\x1b[6;30;42m' + 'Success! All test cases passed!' + '\x1b[0m')
+            print('Success! All test cases passed!')
         else:
-            print('\x1b[5;30;41m' + 'Failed! One or more test cases failed!' + '\x1b[0m')
+            print('Failed! One or more test cases failed!')
         print('✅: {} ❌: {}'.format(iterations-failed_count, failed_count))
         if failed_count and out_file:
             print('The complete summary can be found in', out_file)
