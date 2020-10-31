@@ -5,10 +5,10 @@ class Generator:
 
     def generate(self, max_t, file_path=None):
         seed(randint(1,100))
-        t = randint(1, max_t)
-        testcase = str(t) + '\n'
-        for t in range(t):
-            testcase += self.input_fn()
+        # t = randint(1, max_t)
+        # testcase = str(t) + '\n'
+        # for t in range(t):
+        testcase = self.input_fn()
         if file_path:
             with open(file_path, 'w') as f:
                 f.write(testcase)
